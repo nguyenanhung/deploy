@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: controllers
+commonLabels:
+  author: quangbm
+  app: traefik-ingress-controller
+
+resources:
+  - cluster-role.yaml
+  - crd.yaml
+  - daemonset.yaml
+  - service-account.yaml
