@@ -1,0 +1,71 @@
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: DecoratorController
+metadata:
+  name: sipp-pod-name-as-label
+spec:
+  resources:
+  - apiVersion: v1
+    resource: pods
+    annotationSelector:
+      matchExpressions:
+      - {key: sipp-label-key, operator: Exists}
+      - {key: sipp-ports, operator: Exists}
+      - {key: sipp-host, operator: Exists}
+      - {key: sipp-namespace, operator: Exists}
+  hooks:
+    sync:
+      webhook:
+        url: http://service-per-pod-controller-svc.controllers.svc.cluster.local/sync-pod-name-as-label
+
+---
+
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: DecoratorController
+metadata:
+  name: sipp-service-per-pod
+spec:
+  resources:
+  - apiVersion: v1
+    resource: pods
+    annotationSelector:
+      matchExpressions:
+      - {key: sipp-label-key, operator: Exists}
+      - {key: sipp-ports, operator: Exists}
+      - {key: sipp-host, operator: Exists}
+      - {key: sipp-namespace, operator: Exists}
+  attachments:
+  - apiVersion: v1
+    resource: services
+  hooks:
+    sync:
+      webhook:
+        url: http://service-per-pod-controller-svc.controllers.svc.cluster.local/sync-service-per-pod
+    # finalize:
+    #   webhook:
+    #     url: http://service-per-pod-controller-svc.controllers.svc.cluster.local/finalize-service-per-pod
+
+---
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: DecoratorController
+metadata:
+  name: sipp-ingress-per-pod
+spec:
+  resources:
+  - apiVersion: v1
+    resource: pods
+    annotationSelector:
+      matchExpressions:
+      - {key: sipp-label-key, operator: Exists}
+      - {key: sipp-ports, operator: Exists}
+      - {key: sipp-host, operator: Exists}
+      - {key: sipp-namespace, operator: Exists}
+  attachments:
+  - apiVersion: v1
+    resource: services
+  hooks:
+    sync:
+      webhook:
+        url: http://service-per-pod-controller-svc.controllers.svc.cluster.local/sync-ingress-per-pod
+    # finalize:
+    #   webhook:
+    #     url: http://service-per-pod-controller-svc.controllers.svc.cluster.local/finalize-ingress-per-pod

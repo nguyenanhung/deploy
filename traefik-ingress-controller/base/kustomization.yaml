@@ -3,7 +3,6 @@ kind: Kustomization
 
 namespace: controllers
 commonLabels:
-  author: quangbm
   app: traefik-ingress-controller
 
 resources:
