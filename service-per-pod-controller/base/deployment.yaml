@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-per-pod-controller-deploy
+  name: service-per-pod-controller
 spec:
   replicas: 1
   # selector define in kustomization.yaml

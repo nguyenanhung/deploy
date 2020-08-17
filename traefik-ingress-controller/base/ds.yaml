@@ -1,0 +1,40 @@
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: traefik-ingress-controller
+spec:
+  template:
+    spec:
+      serviceAccountName: traefik-ingress-controller
+      containers:
+        - name: traefik
+          image: traefik:v2.2
+          args:
+            - --api.insecure
+            - --accesslog
+            - --entrypoints.web.Address=:8000
+            - --entrypoints.websecure.Address=:4443
+            - --providers.kubernetescrd
+            - --certificatesresolvers.myresolver.acme.tlschallenge
+            - --certificatesresolvers.myresolver.acme.email=quangbm@gviet.vn
+            - --certificatesresolvers.myresolver.acme.storage=acme.json
+
+            - --log.level=DEBUG
+            
+            # this is the staging Let's Encrypt server.
+            # Once you get things working, you should remove that whole line altogether.
+            - --certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+            - --providers.kubernetesingress 
+          ports:
+            - name: web
+              containerPort: 8000
+            - name: websecure
+              containerPort: 4443
+            - name: admin
+              containerPort: 8080
+          securityContext:
+            capabilities:
+              drop:
+              - ALL
+              add:
+              - NET_BIND_SERVICE
