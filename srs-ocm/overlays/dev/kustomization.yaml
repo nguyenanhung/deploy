@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: dev-srs-ocm
 commonLabels:
   app: srs-ocm
-  group: srs
+  group: ingest
   env: dev
 
 generatorOptions:

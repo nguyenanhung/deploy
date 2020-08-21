@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: dev-srs-ocm-db
 commonLabels:
   app: srs-ocm-db
-  group: srs
+  group: ingest
   env: dev
 
 resources:
