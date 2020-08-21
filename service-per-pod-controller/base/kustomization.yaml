@@ -3,8 +3,8 @@ kind: Kustomization
 
 resources:
   - decorator-controller.yaml
-  - deployment.yaml
-  - service.yaml
+  - deploy.yaml
+  - svc.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
