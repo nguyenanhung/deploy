@@ -1,0 +1,3 @@
+# srs
+* dependencies:
+  * srs-ocm
