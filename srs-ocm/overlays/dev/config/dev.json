@@ -1,6 +1,6 @@
 {
   "port": 3001,
   "host": "0.0.0.0",
-  "mongodbUrl": "mongodb://srs-ocm-db.dev-srs-ocm-db.svc.cluster.local:27017/ocm",
+  "mongodbUrl": "mongodb://srs-ocm-db:27017/ocm",
   "srsDiscoveryPath": "/api/v1/clusters"
 }
