@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dev-service-per-pod-controller
+  name: dev-controllers

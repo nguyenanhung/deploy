@@ -15,7 +15,7 @@ spec:
   hooks:
     sync:
       webhook:
-        url: http://service-per-pod-controller.controllers.svc.cluster.local/sync-pod-name-as-label
+        url: http://service-per-pod-controller/sync-pod-name-as-label
 
 ---
 
@@ -39,10 +39,10 @@ spec:
   hooks:
     sync:
       webhook:
-        url: http://service-per-pod-controller.controllers.svc.cluster.local/sync-service-per-pod
+        url: http://service-per-pod-controller/sync-service-per-pod
     # finalize:
     #   webhook:
-    #     url: http://service-per-pod-controller.controllers.svc.cluster.local/finalize-service-per-pod
+    #     url: http://service-per-pod-controller/finalize-service-per-pod
 
 ---
 apiVersion: metacontroller.k8s.io/v1alpha1
@@ -65,7 +65,7 @@ spec:
   hooks:
     sync:
       webhook:
-        url: http://service-per-pod-controller.controllers.svc.cluster.local/sync-ingress-per-pod
+        url: http://service-per-pod-controller/sync-ingress-per-pod
     # finalize:
     #   webhook:
-    #     url: http://service-per-pod-controller.controllers.svc.cluster.local/finalize-ingress-per-pod
+    #     url: http://service-per-pod-controller/finalize-ingress-per-pod
