@@ -8,5 +8,4 @@ commonLabels:
   env: dev
 
 resources:
-  - ns.yaml
   - ../../base

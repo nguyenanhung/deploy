@@ -17,7 +17,6 @@ configMapGenerator:
 
 resources:
   - ../../base
-  - ns.yaml
 
 patchesStrategicMerge:
 - add-dev-config.yaml

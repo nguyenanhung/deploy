@@ -7,5 +7,4 @@ commonLabels:
   group: controllers
   env: dev
 resources:
-  - ns.yaml
   - ../../base
