@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: dev-packager
 commonLabels:
-  app: origin
+  app: packager-origin
   group: packager
   env: dev
 
