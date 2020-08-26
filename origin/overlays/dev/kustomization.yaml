@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: dev-packager
+commonLabels:
+  app: origin
+  group: packager
+  env: dev
+
+generatorOptions:
+  disableNameSuffixHash: true
+  
+configMapGenerator:
+  - name: nginx-conf-template
+    files:
+      - nginx-conf-template/origin.conf
+
+resources:
+  - ../../base
+
+
+patchesStrategicMerge:
+  - allow-mount-volume-in-host.yaml

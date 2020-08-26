@@ -8,5 +8,5 @@ commonLabels:
   env: dev
 
 resources:
-  - svc.yaml
+  - ../../base
   - deploy.yaml

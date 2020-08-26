@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: origin
+spec:
+  replicas: 1
+  template:
+    spec:
+      initContainers:
+        - name: nginx-conf-generator
+          image: lachlanevenson/k8s-kubectl
+          command: ['sh', '-c']
+
+          #change somelabel to real label that represent the path 
+          args: 
+            - "STATIC_PATH=$(kubectl get nodes ${NODE_NAME} -Lsomelabel | awk '{print $6}' | tail -n 1) && cat /nginx-conf-template/origin.conf | sed -e s/__need_to_fill__/$STATIC_PATH/g > /nginx-conf/origin.conf"
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: /nginx-conf
+            - name: nginx-conf-template
+              mountPath: /nginx-conf-template
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+      containers:
+        - name: origin
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: statics
+              mountPath: /statics
+            - name: nginx-conf
+              mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: statics
+          hostPath:
+            path: /
+            type: Directory
+        - name: nginx-conf
+          emptyDir: {}
+        - name: nginx-conf-template
+          configMap:
+            name: nginx-conf-template
