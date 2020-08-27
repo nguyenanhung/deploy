@@ -4,3 +4,4 @@
 * update srs -> v4
 * change somelabel -> `real label of node` in packager-origin
 * change srs-origin config for production
+* add nodeSlector for storage svc (e.g: elasticsearch, mongodb, prometheus)
