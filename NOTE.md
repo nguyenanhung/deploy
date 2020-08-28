@@ -5,3 +5,5 @@
 * change somelabel -> `real label of node` in packager-origin
 * change srs-origin config for production
 * add nodeSlector for storage svc (e.g: elasticsearch, mongodb, prometheus)
+* change overlay volumes in logger-es
+* add podAntiAffinitiy to make es-pod not co-locate in same node

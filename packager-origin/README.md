@@ -1,2 +1,2 @@
 # packager-origin
-Server static file (usually video) that packager service is generate
+Server static file (usually video) that packager service generates

@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: dev-logger
+commonLabels:
+  app: srs-ocm
+  group: logger
+  env: dev
+
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - add-empty-dir-volume.yaml
+  - single-node-cluster.yaml

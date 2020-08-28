@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: logger-es
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: elasticsearch
+          env:
+            - name: discovery.seed_hosts
+              value: 'logger-es-0.elasticsearch'
+            - name: cluster.initial_master_nodes
+              value: 'logger-es-0'
+            - name: ES_JAVA_OPTS
+              value: '-Xms512m -Xmx512m'
