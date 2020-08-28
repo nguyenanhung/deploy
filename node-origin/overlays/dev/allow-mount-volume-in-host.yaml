@@ -10,10 +10,8 @@ spec:
         - name: nginx-conf-generator
           image: lachlanevenson/k8s-kubectl
           command: ['sh', '-c']
-
-          #change somelabel to real label that represent the path 
           args: 
-            - "STATIC_PATH=$(kubectl get nodes ${NODE_NAME} -Lsomelabel | awk '{print $6}' | tail -n 1) && cat /nginx-conf-template/origin.conf | sed -e s/__need_to_fill__/$STATIC_PATH/g > /nginx-conf/origin.conf"
+            - "STATIC_PATH=$(kubectl get nodes ${NODE_NAME} -LstorePath | awk '{print $6}' | tail -n 1) && cat /nginx-conf-template/origin.conf | sed -e s/__need_to_fill__/$STATIC_PATH/g > /nginx-conf/origin.conf"
           volumeMounts:
             - name: nginx-conf
               mountPath: /nginx-conf
