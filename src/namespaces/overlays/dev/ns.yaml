@@ -20,7 +20,13 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dev-logger
+  name: dev-storage
+
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: dev-logger
 
 ---
 apiVersion: v1

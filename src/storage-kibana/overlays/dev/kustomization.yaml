@@ -1,10 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: dev-logger
+namespace: dev-storage
 commonLabels:
-  app: logger-kibana
-  group: logger
+  app: storage-kibana
+  group: storage
   env: dev
 
 resources:

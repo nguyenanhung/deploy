@@ -1,18 +1,18 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: logger-kibana
+  name: storage-kibana
 spec:
   # entryPoints:
-  #   - logger-kibana
+  #   - storage-kibana
   routes:
     - kind: Rule
-      match: Host(`logger-kibana`)
+      match: Host(`storage-kibana`)
       priority: 10
       services:
         - kind: Service
-          name: logger-kibana
-          namespace: dev-logger
+          name: storage-kibana
+          namespace: dev-storage
           port: 5601
           strategy: RoundRobin
           weight: 10

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: logger-kibana
+  name: storage-kibana
 spec:
   replicas: 1
   strategy:
@@ -21,6 +21,6 @@ spec:
               cpu: 100m
           env:
             - name: ELASTICSEARCH_HOSTS
-              value: http://logger-es:9200
+              value: http://storage-es:9200
           ports:
             - containerPort: 5601
