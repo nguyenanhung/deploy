@@ -32,4 +32,10 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: dev-monitor
+  name: dev-metrics
+
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: dev-monitor

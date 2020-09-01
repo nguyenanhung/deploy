@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: monitor-prometheus
+  name: storage-prometheus
 spec:
   replicas: 1
   strategy:
@@ -15,7 +15,7 @@ spec:
         prometheus.io/scrape: 'true'
         prometheus.io/port: '9090'
     spec:
-      serviceAccountName: monitor-prometheus
+      serviceAccountName: storage-prometheus
       containers:
         - name: prometheus
           image: prom/prometheus:v2.20.1
@@ -40,7 +40,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: monitor-prometheus
+            name: storage-prometheus
         - name: data
           hostPath:
             path: /tmp

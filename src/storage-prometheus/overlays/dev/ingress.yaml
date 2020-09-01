@@ -1,18 +1,18 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: monitor-prometheus
+  name: storage-prometheus
 spec:
   # entryPoints:
-  #   - monitor-prometheus
+  #   - storage-prometheus
   routes:
     - kind: Rule
-      match: Host(`monitor-prometheus`)
+      match: Host(`storage-prometheus`)
       priority: 10
       services:
         - kind: Service
-          name: monitor-prometheus
-          namespace: dev-monitor
+          name: storage-prometheus
+          namespace: dev-storage
           port: 9090
           strategy: RoundRobin
           weight: 10

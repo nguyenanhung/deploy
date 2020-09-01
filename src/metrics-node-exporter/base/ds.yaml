@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: monitor-node-exporter
+  name: metrics-node-exporter
 spec:
   template:
     metadata:
@@ -11,7 +11,7 @@ spec:
       hostPID: true
       hostIPC: true
       hostNetwork: true
-      serviceAccountName: monitor-node-exporter
+      serviceAccountName: metrics-node-exporter
       containers:
         - ports:
             - containerPort: 9100
