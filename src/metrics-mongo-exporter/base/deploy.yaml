@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-mongo-exporter
+spec:
+  replicas: 1
+  template:
+    metadata:
+      annotations:
+        checksum/config: e9bc4ab1a11c58e6ac120f4db6d82a20d1962fc4f86183a1cb7eca524821fdd3
+    spec:
+      containers:
+      - name: mongodb-exporter
+        env:
+          - name: MONGODB_URI
+            value: "mongodb://storage-mongo.dev-storage:27017"
+        image: "ssheehy/mongodb-exporter:0.10.0"
+        imagePullPolicy: IfNotPresent
+        args:
+        - --web.listen-address=:9216
+        - --collect.collection
+        - --collect.database
+        - --collect.indexusage
+        - --collect.topmetrics
+        - --collect.connpoolstats
+        ports:
+        - name: metrics
+          containerPort: 9216
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /
+            port: metrics
+          initialDelaySeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: metrics
+          initialDelaySeconds: 10
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - all
+          readOnlyRootFilesystem: true
+          runAsGroup: 10000
+          runAsNonRoot: true
+          runAsUser: 10000
