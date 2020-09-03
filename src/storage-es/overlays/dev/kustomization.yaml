@@ -9,7 +9,3 @@ commonLabels:
 
 resources:
   - ../../base
-
-patchesStrategicMerge:
-  - add-empty-dir-volume.yaml
-  - single-node-cluster.yaml
