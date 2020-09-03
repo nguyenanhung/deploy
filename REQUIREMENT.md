@@ -1,4 +1,13 @@
-## System Requirement Detail
+### System Requirement
+
+* Node OS: any modern Linux distribution and any modern Docker version
+  * Test in CentOs 7, Docker version v18.06.1-ce
+  * All supported operating systems are 64-bit x86
+* K8s requirement: Hệ thống K8s được triển khai dựa trên **rancher** v2.4.5 qua **RKE** sử dụng CNI **canal**
+  * Rancher 2.4.5, 
+    * K8s version v1.18.6 by default
+
+### Server Requirement Detail
 
 | stt |  component | Cấu hình | SL  tối thiểu HA | SL phục vụ 2000 luồng | Yêu cầu storage                                              |
 |:-:|---|---|---|---|---|
@@ -19,9 +28,7 @@
 * Transcoder:
   * Hệ thống transcoder được tách biệt so với các thành phần khác nếu không sử dụng ramdisk làm storage live chỉ cần yêu cầu băng thông input đủ từ ingest đến transcoder và multicast đến packager
 
-<div style="page-break-after: always;"></div>
-
-## Network Requirement
+### Network Requirement
 
 | stt |  component | Ingest | Transcoder | Packager | Origin                          | Api  Server | Monitor | Logging | Internet out |
 |:-:|---|---|---|---|---|---|---|---|---|
@@ -49,4 +56,4 @@
       35.167.242.46:32
       52.33.59.17:32
   * **(5)**: 30000-30100/tcp, 80,443/tcp  
-  * **(\*\*)**: tất cả các node có mở port **9099/tcp, 10254/tcp** chỉ sử dụng trên node đó
+  * **(\*)**: tất cả các node có mở port **9099/tcp, 10254/tcp** chỉ sử dụng trên node đó
