@@ -1,7 +1,7 @@
 function(request) {
   local pod = request.object,
   local nodeName = pod.spec.nodeName,
-  local nodeNameHash = std.md5(nodeName),
+  local nodeNameHash = std.substr(std.md5(nodeName), 0, 10),
   local svcName = pod.metadata.annotations["sipn-svc-name"],
   local ports = pod.metadata.annotations["sipn-ports"],
   local namespace = pod.metadata.annotations["sipn-namespace"],
