@@ -21,3 +21,4 @@ resources:
 
 patchesStrategicMerge:
   - allow-mount-volume-in-host.yaml
+  - allow-create-ingress-per-node.yaml
