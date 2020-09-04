@@ -11,8 +11,6 @@ spec:
     spec:
       terminationGracePeriodSeconds: 10
       volumes:
-        - name: data
-          emptyDir: {}
         - name: config
           configMap:
             name: discovery-consul-client-config
@@ -59,8 +57,6 @@ spec:
                 -retry-join="${CONSUL_FULLNAME}-server-2.${CONSUL_FULLNAME}-server.${NAMESPACE}.svc" \
                 -domain=consul
           volumeMounts:
-            - name: data
-              mountPath: /consul/data
             - name: config
               mountPath: /consul/config
           ports:

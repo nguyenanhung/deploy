@@ -11,6 +11,9 @@ configMapGenerator:
   - name: discovery-consul-server-config
     files:
       - config/extra-from-values.json
-  
+
 resources:
   - ../../base
+
+patchesStrategicMerge:
+  - allow-mount-data.yaml

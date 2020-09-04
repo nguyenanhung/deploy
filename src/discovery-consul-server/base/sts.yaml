@@ -26,8 +26,6 @@ spec:
         - name: config
           configMap:
             name: discovery-consul-server-config
-        - name: data
-          emptyDir: {}
       containers:
         - name: consul
           image: 'consul:1.8.2'
@@ -56,8 +54,6 @@ spec:
                 -retry-join=discovery-consul-server-2.discovery-consul-server \
                 -server
           volumeMounts:
-            - name: data
-              mountPath: /consul/data
             - name: config
               mountPath: /consul/config
           lifecycle:

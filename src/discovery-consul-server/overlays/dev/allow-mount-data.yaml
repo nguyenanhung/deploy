@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: discovery-consul-server
+spec:
+  template:
+    spec:
+      volumes:
+        - name: data
+          emptyDir: {}
+      containers:
+        - name: consul
+          volumeMounts:
+            - name: data
+              mountPath: /consul/data
