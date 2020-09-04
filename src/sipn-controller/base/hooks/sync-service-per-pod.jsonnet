@@ -1,8 +1,10 @@
 function(request) {
   local pod = request.object,
-  local labelKey = pod.metadata.annotations["sipp-label-key"],
-  local ports = pod.metadata.annotations["sipp-ports"],
-  local namespace = pod.metadata.annotations["sipp-namespace"],
+  local nodeName = pod.spec.nodeName,
+  local nodeNameHash = std.md5(nodeName),
+  local svcName = pod.metadata.annotations["sipn-svc-name"],
+  local ports = pod.metadata.annotations["sipn-ports"],
+  local namespace = pod.metadata.annotations["sipn-namespace"],
 
   // Create a service for each Pod, with a selector on the given label key.
   attachments: [
@@ -10,13 +12,13 @@ function(request) {
       apiVersion: "v1",
       kind: "Service",
       metadata: {
-        name: pod.metadata.name,
-        labels: {app: "sipp"},
+        name: svcName + "-" + nodeNameHash,
         namespace: namespace
       },
       spec: {
         selector: {
-          [labelKey]: pod.metadata.name
+          attachSipnSvc: svcName,
+          nodeNameHash: nodeNameHash,
         },
         ports: [
           {

@@ -12,7 +12,7 @@ generatorOptions:
 configMapGenerator:
   - name: service-ingress-per-pod-hooks
     files:
-      - hooks/finalize-service-per-pod.jsonnet
+      # - hooks/finalize-service-per-pod.jsonnet
       - hooks/sync-ingress-per-pod.jsonnet
-      - hooks/sync-pod-name-as-label.jsonnet
+      - hooks/sync-node-name-as-label.jsonnet
       - hooks/sync-service-per-pod.jsonnet

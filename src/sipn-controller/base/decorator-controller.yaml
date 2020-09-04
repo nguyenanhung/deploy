@@ -1,0 +1,62 @@
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: DecoratorController
+metadata:
+  name: sipn-node-name-as-label
+spec:
+  resources:
+  - apiVersion: v1
+    resource: pods
+    annotationSelector:
+      matchExpressions:
+      - {key: sipn-svc-name, operator: Exists}
+      - {key: sipn-ports, operator: Exists}
+      - {key: sipn-namespace, operator: Exists}
+  hooks:
+    sync:
+      webhook:
+        url: http://sipn-controller/sync-node-name-as-label
+
+---
+
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: DecoratorController
+metadata:
+  name: sipn-service-per-pod
+spec:
+  resources:
+  - apiVersion: v1
+    resource: pods
+    annotationSelector:
+      matchExpressions:
+      - {key: sipn-svc-name, operator: Exists}
+      - {key: sipn-ports, operator: Exists}
+      - {key: sipn-namespace, operator: Exists}
+  attachments:
+  - apiVersion: v1
+    resource: services
+  hooks:
+    sync:
+      webhook:
+        url: http://sipn-controller/sync-service-per-pod
+
+---
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: DecoratorController
+metadata:
+  name: sipn-ingress-per-pod
+spec:
+  resources:
+  - apiVersion: v1
+    resource: pods
+    annotationSelector:
+      matchExpressions:
+      - {key: sipn-svc-name, operator: Exists}
+      - {key: sipn-ports, operator: Exists}
+      - {key: sipn-namespace, operator: Exists}
+  attachments:
+  - apiVersion: v1
+    resource: services
+  hooks:
+    sync:
+      webhook:
+        url: http://sipn-controller/sync-ingress-per-pod
