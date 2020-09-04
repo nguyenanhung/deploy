@@ -11,6 +11,7 @@ spec:
     type: RollingUpdate
   template:
     spec:
+      serviceAccountName: node-origin
       containers:
       - name:  origin
         image:  nginx:alpine
