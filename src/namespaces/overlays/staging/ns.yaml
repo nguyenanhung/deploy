@@ -1,0 +1,59 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-node-origin
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-controllers
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-ingest
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-storage
+
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: staging-logger
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-metrics
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-messaging
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-discovery
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-visualization
+
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: staging-monitor

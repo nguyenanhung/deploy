@@ -1,3 +1,3 @@
-# storage-kibana
+# visualization-kibana
 - dependencies:
   - storage-es

@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: staging-metrics
+commonLabels:
+  app: metrics-es-exporter
+  group: metrics
+  env: staging
+
+resources:
+  - ../../base
+  
+patchesStrategicMerge:
+  - change-es-url.yaml

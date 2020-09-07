@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-es-exporter
+spec:
+  template:
+    spec:
+      containers:
+        - name: elasticsearch-exporter
+          command:
+            [
+              'elasticsearch_exporter',
+              '--log.format=logfmt',
+              '--log.level=info',
+              '--es.uri=http://storage-es.staging-storage:9200',
+              '--es.all',
+              '--es.indices',
+              '--es.indices_settings',
+              '--es.shards',
+              '--es.snapshots',
+              '--es.timeout=30s',
+              '--web.listen-address=:9108',
+              '--web.telemetry-path=/metrics',
+            ]

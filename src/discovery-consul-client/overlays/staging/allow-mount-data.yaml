@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: discovery-consul-client
+spec:
+  template:
+    spec:
+      terminationGracePeriodSeconds: 10
+      volumes:
+        - name: data
+          hostPath:
+            path: /usr/staging-consul-client
+      containers:
+        - name: consul
+          volumeMounts:
+            - name: data
+              mountPath: /consul/data

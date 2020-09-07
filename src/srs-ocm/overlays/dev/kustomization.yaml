@@ -11,7 +11,7 @@ generatorOptions:
   disableNameSuffixHash: true
   
 configMapGenerator:
-  - name: srs-ocm-config-dev
+  - name: srs-ocm-config
     files:
       - config/dev.json
 
@@ -19,4 +19,4 @@ resources:
   - ../../base
 
 patchesStrategicMerge:
-- add-dev-config.yaml
+- add-config.yaml
