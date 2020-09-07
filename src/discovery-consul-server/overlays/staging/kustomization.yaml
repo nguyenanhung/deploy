@@ -17,3 +17,4 @@ resources:
 
 patchesStrategicMerge:
   - allow-mount-data.yaml
+  - allow-schedule-on-specific-node.yaml

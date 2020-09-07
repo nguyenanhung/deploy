@@ -9,3 +9,6 @@ commonLabels:
 
 resources:
   - ../../base
+
+patchesStrategicMerge:
+  - allow-schedule-on-specific-node.yaml

@@ -13,3 +13,4 @@ resources:
 
 patchesStrategicMerge:
   - change-es-url.yaml
+  - allow-schedule-on-specific-node.yaml

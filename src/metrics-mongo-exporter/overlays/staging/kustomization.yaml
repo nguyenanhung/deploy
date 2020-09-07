@@ -12,3 +12,4 @@ resources:
 
 patchesStrategicMerge:
   - change-mongo-url.yaml
+  - allow-schedule-on-specific-node.yaml
