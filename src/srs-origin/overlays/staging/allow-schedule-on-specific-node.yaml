@@ -1,0 +1,9 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: srs-origin
+spec:
+  template:
+    spec:
+      nodeSelector:
+        node-role.sigmaott.com/ingest: 'true'

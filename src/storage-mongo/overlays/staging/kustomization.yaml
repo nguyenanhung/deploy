@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: staging-storage
+commonLabels:
+  app: storage-mongo
+  group: storage
+  env: staging
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - allow-mount-data.yaml
+  - allow-schedule-on-specific-node.yaml

@@ -12,3 +12,6 @@ generatorOptions:
 
 resources:
   - ../../base
+
+patchesStrategicMerge:
+  - allow-mount-data.yaml

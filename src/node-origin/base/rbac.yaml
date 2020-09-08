@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRole
+metadata:
+  name: node-origin
+rules:
+- apiGroups: [""]
+  resources:
+  - nodes
+  verbs: ["get"]
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: node-origin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: node-origin
+subjects:
+- kind: ServiceAccount
+  name: node-origin

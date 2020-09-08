@@ -11,7 +11,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 configMapGenerator:
-  - name: srs-edge-conf-dev
+  - name: srs-edge-conf
     files:
       - conf/srs.conf
 
@@ -19,4 +19,4 @@ resources:
   - ../../base
 
 patchesStrategicMerge:
-  - add-dev-config.yaml
+  - add-config.yaml

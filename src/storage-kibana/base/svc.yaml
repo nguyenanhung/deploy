@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: storage-kibana
-spec:
-  ports:
-  - port: 5601

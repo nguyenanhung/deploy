@@ -46,6 +46,12 @@ kind: Namespace
 metadata:
   name: dev-discovery
 
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-visualization
+
 # ---
 # apiVersion: v1
 # kind: Namespace

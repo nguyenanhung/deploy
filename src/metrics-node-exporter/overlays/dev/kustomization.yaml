@@ -9,3 +9,6 @@ commonLabels:
 
 resources:
   - ../../base
+
+patchesStrategicMerge:
+  - allow-mount-host-volume.yaml

@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-origin
+spec:
+  template:
+    metadata:
+      annotations:
+        sipn-svc-name: "node-origin"
+        sipn-ports: "80:80"
+        sipn-namespace: "staging-node-origin"

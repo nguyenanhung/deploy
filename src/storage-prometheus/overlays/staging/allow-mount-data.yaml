@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storage-prometheus
+spec:
+  template:
+    spec:
+      securityContext:
+        runAsUser: 0
+      containers:
+        - name: prometheus
+          volumeMounts:
+            - name: config
+              mountPath: /etc/prometheus
+            - name: data
+              mountPath: /prometheus
+      volumes:
+        - name: config
+          configMap:
+            name: storage-prometheus
+        - name: data
+          hostPath:
+            path: /usr/staging-prometheus

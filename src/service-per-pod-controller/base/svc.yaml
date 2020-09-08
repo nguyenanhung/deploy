@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: service-per-pod-controller
-spec:
-  # selector define in kustomization.yaml
-  ports:
-  - port: 80
-    targetPort: 8080

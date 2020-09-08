@@ -22,14 +22,8 @@ spec:
             - "--noprealloc"
           ports:
             - containerPort: 27017
-          volumeMounts:
-            - name: data
-              mountPath: /data/db
         - name: mongo-sidecar
           image: cvallance/mongo-k8s-sidecar
           env:
             - name: MONGO_SIDECAR_POD_LABELS
               value: 'sidecarSelector=storage-mongo'
-      volumes:
-        - name: data
-          emptyDir: {}
