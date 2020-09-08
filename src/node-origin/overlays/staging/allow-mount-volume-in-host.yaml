@@ -11,7 +11,7 @@ spec:
           image: lachlanevenson/k8s-kubectl
           command: ['sh', '-c']
           args: 
-            - "STATIC_PATH=$(kubectl get nodes ${NODE_NAME} -Ldata-dir | awk '{print $6}' | tail -n 1) && cat /nginx-conf-template/origin.conf | sed -e s/__need_to_fill__/$STATIC_PATH/g > /nginx-conf/origin.conf"
+            - "STATIC_PATH=$(kubectl get nodes ${NODE_NAME} -Lsigmaott.com/data-dir | awk '{print $6}' | tail -n 1) && cat /nginx-conf-template/origin.conf | sed -e s/__need_to_fill__/$STATIC_PATH/g > /nginx-conf/origin.conf"
           volumeMounts:
             - name: nginx-conf
               mountPath: /nginx-conf
