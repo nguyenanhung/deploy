@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: sc-provision-controller 
+spec:
+  template:
+    spec:
+      serviceAccountName: sc-provision-controller
+      containers:
+        - image: "quay.io/external_storage/local-volume-provisioner:v2.1.0"
+          imagePullPolicy: "Always"
+          name: provisioner 
+          securityContext:
+            privileged: true
+          env:
+          - name: MY_NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          volumeMounts:
+            - mountPath: /etc/provisioner/config 
+              name: provisioner-config
+              readOnly: true             
+            - mountPath:  /mnt/fast-disks 
+              name: fast-disks
+              mountPropagation: "HostToContainer" 
+      volumes:
+        - name: provisioner-config
+          configMap:
+            name: sc-provision-controller
+        - name: fast-disks
+          hostPath:
+            path: /mnt/fast-disks 
