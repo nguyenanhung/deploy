@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visualization-weavescope-frontend
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: frontend
+          image: 'weaveworks/scope:1.12.0'
+          imagePullPolicy: 'IfNotPresent'
+          args:
+            - '--no-probe'
+          ports:
+            - name: http
+              containerPort: 4040
+              protocol: TCP
+          resources: null
