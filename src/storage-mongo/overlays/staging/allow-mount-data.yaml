@@ -10,7 +10,12 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data/db
-      volumes:
-        - name: data
-          hostPath:
-            path: /usr/staging-mongo
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: local-disks
+      resources:
+        requests:
+          storage: 1Gi

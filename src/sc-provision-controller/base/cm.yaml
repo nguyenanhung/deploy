@@ -4,9 +4,9 @@ metadata:
   name: sc-provision-controller
 data:
   storageClassMap: |     
-    fast-disks:
-       hostDir: /mnt/fast-disks
-       mountDir:  /mnt/fast-disks 
+    local-disks:
+       hostDir: /mnt/local-disks
+       mountDir:  /mnt/local-disks 
        blockCleanerCommand:
          - "/scripts/shred.sh"
          - "2"

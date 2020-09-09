@@ -21,13 +21,13 @@ spec:
             - mountPath: /etc/provisioner/config 
               name: provisioner-config
               readOnly: true             
-            - mountPath:  /mnt/fast-disks 
-              name: fast-disks
+            - mountPath:  /mnt/local-disks 
+              name: local-disks
               mountPropagation: "HostToContainer" 
       volumes:
         - name: provisioner-config
           configMap:
             name: sc-provision-controller
-        - name: fast-disks
+        - name: local-disks
           hostPath:
-            path: /mnt/fast-disks 
+            path: /mnt/local-disks 
