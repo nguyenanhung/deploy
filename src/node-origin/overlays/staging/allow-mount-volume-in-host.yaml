@@ -32,9 +32,11 @@ spec:
               mountPath: /etc/nginx/conf.d
       volumes:
         - name: statics
-          hostPath:
-            path: /
-            type: Directory
+          # hostPath:
+          #   path: /
+          #   type: Directory
+          persistentVolumeClaim:
+            claimName: node-statics # from node-statics folder
         - name: nginx-conf
           emptyDir: {}
         - name: nginx-conf-template
