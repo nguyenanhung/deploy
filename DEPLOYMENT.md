@@ -29,3 +29,8 @@
 * group: controllers cannot have multi env (e.g: At the same time, there cannot be both dev and prod env existed)
 
 
+### Deploy
+[Warning] require kustomize and kubectl are installed
+
+* Command: kustomize build src/${workload}/overlays/${env} | kubectl apply -f
+* If you get an error in any workload, read src/${workload}/README.md, it will show you the dependencies (have to install before this current workload) or know how to fix
