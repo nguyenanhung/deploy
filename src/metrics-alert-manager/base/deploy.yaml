@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-alert-manager
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    spec:
+      containers:
+        - name: alert-manager
+          image: prom/alertmanager:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: alert-manager
+              containerPort: 9093
+      restartPolicy: Always
+      securityContext:
+        runAsNonRoot: false
+      terminationGracePeriodSeconds: 10
