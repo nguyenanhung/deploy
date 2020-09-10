@@ -5,12 +5,17 @@ metadata:
 spec:
   template:
     spec:
-      volumes:
-        - name: data
-          hostPath:
-            path: /usr/staging-consul-server
       containers:
         - name: consul
           volumeMounts:
             - name: data
               mountPath: /consul/data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: openebs-hostpath
+      resources:
+        requests:
+          storage: 1Gi

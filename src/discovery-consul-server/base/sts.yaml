@@ -10,7 +10,6 @@ spec:
     metadata:
       annotations:
         'consul.hashicorp.com/connect-inject': 'false'
-        'consul.hashicorp.com/config-checksum': ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356
     spec:
       affinity:
         podAntiAffinity:
