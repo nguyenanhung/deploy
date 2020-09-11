@@ -9,6 +9,8 @@ commonLabels:
 
 resources:
   - ../../base
+  - pvc.yaml
 
 patchesStrategicMerge:
   - allow-schedule-on-specific-node.yaml
+  - allow-mount-data.yaml

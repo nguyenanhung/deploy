@@ -9,6 +9,7 @@ commonLabels:
 
 resources:
   - ../../base
+  - expose-nodeport.yaml
 
 patchesStrategicMerge:
   - allow-mount-data.yaml
