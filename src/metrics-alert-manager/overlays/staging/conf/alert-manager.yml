@@ -1,8 +1,8 @@
 global:
   smtp_smarthost: 'smtp.gmail.com:587'
-  smtp_from: 'tungcuonghust@gmail.com'
-  smtp_auth_username: 'tungcuonghust@gmail.com'
-  smtp_auth_password: 'phamthiluong1977'
+  smtp_from: 'hclo3h2so4@gmail.com'
+  smtp_auth_username: 'hclo3h2so4@gmail.com'
+  smtp_auth_password: 'nguyentungcuong'
 
 route:
   group_by: [alertname, datacenter, app]

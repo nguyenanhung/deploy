@@ -37,3 +37,11 @@ scrape_configs:
       ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
       insecure_skip_verify: true
     bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+rule_files:
+  - alert.rules.yml
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - 10.43.134.225:9093
