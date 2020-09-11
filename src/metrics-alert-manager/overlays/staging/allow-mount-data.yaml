@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-alert-manager
+spec:
+  template:
+    spec:
+      containers:
+        - name: alertmanager
+          volumeMounts:
+            - name: config
+              mountPath: /etc/alertmanager
+            - name: data
+              mountPath: /alertmanager
+      volumes:
+        - name: config
+          configMap:
+            name: metrics-alert-manager-config
+        - name: data
+          hostPath:
+            path: /tmp
+            type: Directory
