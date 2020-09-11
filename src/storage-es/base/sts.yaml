@@ -61,4 +61,4 @@ spec:
             - name: cluster.initial_master_nodes
               value: 'storage-es-0,storage-es-1,storage-es-2'
             - name: ES_JAVA_OPTS
-              value: '-Xms512m -Xmx512m'
+              value: '-Xms1500m -Xmx1500m'
