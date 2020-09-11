@@ -1,0 +1,82 @@
+{{ define "__alertmanager" }}ZCP-AlertManager{{ end }}
+{{ define "__alertmanagerURL" }}{{ .ExternalURL }}/#/alerts?receiver={{ .Receiver }}{{ end }}
+
+{{ define "__subject" }}[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .GroupLabels.SortedPairs.Values | join " " }} {{ if gt (len .CommonLabels) (len .GroupLabels) }}({{ with .CommonLabels.Remove .GroupLabels.Names }}{{ .Values | join " " }}{{ end }}){{ end }}{{ end }}
+{{ define "__description" }}{{ end }}
+
+{{ define "__text_alert_list" }}{{ range . }}Labels:
+{{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }}
+{{ end }}Annotations:
+{{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }}
+{{ end }}Source: {{ .GeneratorURL }}
+{{ end }}{{ end }}
+
+
+{{ define "__custom_title" }}
+'[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] Monitoring Event Notification'
+{{ end }}
+
+{{ define "__custom_text" }}
+{{ range .Alerts }}
+*Alert:* `{{ .Labels.alertname }}`
+*Severity:* `{{ .Labels.severity }}`
+*Environment:* `{{ .Labels.env }}`
+*Description:* {{ .Annotations.description }}  
+{{ end }}
+{{ end }}  
+
+{{ define "hipchat.default.from" }}{{ template "__alertmanager" . }}{{ end }}
+{{ define "hipchat.default.message" }}{{ template "__custom_text" . }}{{ end }}
+
+
+{{ define "pagerduty.default.description" }}{{ template "__subject" . }}{{ end }}
+{{ define "pagerduty.default.client" }}{{ template "__alertmanager" . }}{{ end }}
+{{ define "pagerduty.default.clientURL" }}{{ template "__alertmanagerURL" . }}{{ end }}
+{{ define "pagerduty.default.instances" }}{{ template "__text_alert_list" . }}{{ end }}
+
+
+{{ define "opsgenie.default.message" }}{{ template "__subject" . }}{{ end }}
+{{ define "opsgenie.default.description" }}{{ .CommonAnnotations.SortedPairs.Values | join " " }}
+{{ if gt (len .Alerts.Firing) 0 -}}
+Alerts Firing:
+{{ template "__text_alert_list" .Alerts.Firing }}
+{{- end }}
+{{ if gt (len .Alerts.Resolved) 0 -}}
+Alerts Resolved:
+{{ template "__text_alert_list" .Alerts.Resolved }}
+{{- end }}
+{{- end }}
+{{ define "opsgenie.default.source" }}{{ template "__alertmanagerURL" . }}{{ end }}
+
+
+{{ define "wechat.default.message" }}{{ template "__subject" . }}
+{{ .CommonAnnotations.SortedPairs.Values | join " " }}
+{{ if gt (len .Alerts.Firing) 0 -}}
+Alerts Firing:
+{{ template "__text_alert_list" .Alerts.Firing }}
+{{- end }}
+{{ if gt (len .Alerts.Resolved) 0 -}}
+Alerts Resolved:
+{{ template "__text_alert_list" .Alerts.Resolved }}
+{{- end }}
+AlertmanagerUrl:
+{{ template "__alertmanagerURL" . }}
+{{- end }}
+
+
+
+{{ define "victorops.default.state_message" }}{{ .CommonAnnotations.SortedPairs.Values | join " " }}
+{{ if gt (len .Alerts.Firing) 0 -}}
+Alerts Firing:
+{{ template "__text_alert_list" .Alerts.Firing }}
+{{- end }}
+{{ if gt (len .Alerts.Resolved) 0 -}}
+Alerts Resolved:
+{{ template "__text_alert_list" .Alerts.Resolved }}
+{{- end }}
+{{- end }}
+{{ define "victorops.default.entity_display_name" }}{{ template "__subject" . }}{{ end }}
+{{ define "victorops.default.monitoring_tool" }}{{ template "__alertmanager" . }}{{ end }}
+
+{{ define "email.default.subject" }}{{ template "__subject" . }}{{ end }}
+{{ define "email.default.html" }}
