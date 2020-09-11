@@ -11,9 +11,9 @@ generatorOptions:
   disableNameSuffixHash: true
   
 configMapGenerator:
-  - name: nginx-conf-template
+  - name: node-origin-conf
     files:
-      - nginx-conf-template/origin.conf
+      - conf/origin.conf
 
 resources:
   - ../../base
