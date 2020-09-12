@@ -29,8 +29,38 @@
 * group: controllers cannot have multi env (e.g: At the same time, there cannot be both dev and prod env existed)
 
 
-### Deploy
-[Warning] require kustomize and kubectl are installed
+### Installation
+* Step 1: Clone this repo
+* Step 2: Install tools
+```bash
+./scripts/install-tools.sh
+```
+* Step 3: Allow tools to communicate with the cluster
+  * In rancher ui, click to your cluster name
+  ![rancher-cluster-info](img/rancher-cluster-info.PNG)
+  * Click 'Kubeconfig file'
+  ![rancher-cluster-info](img/rancher-kubeconfig.PNG)
+  * A modal is show up, copy all the content and paste to .kube/config
 
-* Command: kustomize build src/${workload}/overlays/${env} | kubectl apply -f
-* If you get an error in any workload, read src/${workload}/README.md, it will show you the dependencies (have to install before this current workload) or know how to fix
+* Step 4: Install workloads
+```bash
+./scripts/install-workloads.sh
+```
+
+* Step 5: Add project
+  * In rancher ui, click to your cluster name
+  ![rancher-cluster-info](img/rancher-cluster-info.PNG)
+  * Click Projects/Namespaces
+  ![rancher-project](img/rancher-project.PNG)
+  * Click Add project and type your project name
+  * Select all your workload that is not in any project
+  * Click Move and select option (your <project_name>)
+]
+
+* Step 6: View your result
+  * In rancher ui, hover global tab (near the bull icon)
+  ![rancher-cluster-info](img/rancher-cluster-info.PNG)
+  * Hover your cluster name
+  * Click on your project name
+  * View result
+  ![rancher-cluster-info](img/rancher-result.PNG)
