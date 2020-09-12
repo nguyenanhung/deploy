@@ -44,4 +44,4 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets:
-      - metrics-alert-manager:9093
+      - metrics-alert-manager.staging-metrics:9093
