@@ -44,7 +44,7 @@
 
 * Step 4: Install workloads
 ```bash
-./scripts/install-workloads.sh
+./scripts/install-workloads.sh <dev|staging>
 ```
 
 * Step 5: Add project
