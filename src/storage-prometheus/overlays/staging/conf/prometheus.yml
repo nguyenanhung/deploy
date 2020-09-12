@@ -44,4 +44,4 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets:
-      - 10.43.134.225:9093
+      - metrics-alert-manager:9093

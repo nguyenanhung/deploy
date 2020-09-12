@@ -17,4 +17,3 @@ configMapGenerator:
 
 resources:
   - ../../base
-  - ingress.yaml
