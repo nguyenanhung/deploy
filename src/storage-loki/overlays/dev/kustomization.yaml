@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: dev-storage
+commonLabels:
+  app: storage-loki
+  group: storage
+  env: dev
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: storage-loki
+    files:
+      - conf/loki.yaml
+
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - allow-mount-data.yaml

@@ -1,0 +1,35 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: storage-loki
+  namespace: default
+  labels:
+    app: loki
+    chart: loki-0.31.1
+    heritage: Helm
+    release: storage
+rules:
+- apiGroups:      ['extensions']
+  resources:      ['podsecuritypolicies']
+  verbs:          ['use']
+  resourceNames:  [storage-loki]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: storage-loki
+  namespace: default
+  labels:
+    app: loki
+    chart: loki-0.31.1
+    heritage: Helm
+    release: storage
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: storage-loki
+subjects:
+- kind: ServiceAccount
+  name: storage-loki
