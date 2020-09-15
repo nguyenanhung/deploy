@@ -4,7 +4,7 @@ metadata:
   name: storage-loki
 spec:
   podManagementPolicy: OrderedReady
-  replicas: 3
+  replicas: 1
   serviceName: storage-loki-headless
   updateStrategy:
     type: RollingUpdate
