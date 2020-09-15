@@ -10,9 +10,6 @@ commonLabels:
 resources:
   - ../../base
 
-generatorOptions:
-  disableNameSuffixHash: true
-
 configMapGenerator:
   - name: storage-loki-agent
     files:
