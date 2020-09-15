@@ -7,9 +7,6 @@ commonLabels:
   group: storage
   env: dev
 
-generatorOptions:
-  disableNameSuffixHash: true
-
 resources:
   - ../../base
 

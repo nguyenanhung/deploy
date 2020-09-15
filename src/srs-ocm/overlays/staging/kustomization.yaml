@@ -7,9 +7,6 @@ commonLabels:
   group: ingest
   env: staging
 
-generatorOptions:
-  disableNameSuffixHash: true
-
 configMapGenerator:
   - name: srs-ocm-config
     files:

@@ -10,9 +10,6 @@ commonLabels:
   group: metrics
   env: staging
 
-generatorOptions:
-  disableNameSuffixHash: true
-
 configMapGenerator:
   - name: metrics-alert-manager
     files:

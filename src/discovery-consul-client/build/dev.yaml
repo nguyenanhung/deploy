@@ -87,8 +87,8 @@ spec:
           name: serflan-tcp
           protocol: TCP
         - containerPort: 8301
-          name: serflan-tcp
-          protocol: TCP
+          name: serflan-udp
+          protocol: UDP
         - containerPort: 8302
           name: serfwan
         - containerPort: 8300

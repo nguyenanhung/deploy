@@ -6,9 +6,6 @@ commonLabels:
   app: srs-ocm
   group: ingest
   env: dev
-
-generatorOptions:
-  disableNameSuffixHash: true
   
 configMapGenerator:
   - name: srs-ocm-config

@@ -5,9 +5,6 @@ resources:
   - decorator-controller.yaml
   - deploy.yaml
   - svc.yaml
-
-generatorOptions:
-  disableNameSuffixHash: true
   
 configMapGenerator:
   - name: service-ingress-per-pod-hooks

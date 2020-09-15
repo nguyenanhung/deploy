@@ -7,9 +7,6 @@ commonLabels:
   group: storage
   env: dev
 
-generatorOptions:
-  disableNameSuffixHash: true
-
 configMapGenerator:
   - name: storage-prometheus
     files:

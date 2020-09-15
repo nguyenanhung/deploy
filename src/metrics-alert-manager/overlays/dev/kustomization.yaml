@@ -7,9 +7,6 @@ commonLabels:
   group: metrics
   env: dev
 
-generatorOptions:
-  disableNameSuffixHash: true
-
 configMapGenerator:
   - name: metrics-alert-manager
     files:

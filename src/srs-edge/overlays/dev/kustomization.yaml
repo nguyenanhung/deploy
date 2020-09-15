@@ -7,9 +7,6 @@ commonLabels:
   group: ingest
   env: dev
 
-generatorOptions:
-  disableNameSuffixHash: true
-
 configMapGenerator:
   - name: srs-edge-conf
     files:
