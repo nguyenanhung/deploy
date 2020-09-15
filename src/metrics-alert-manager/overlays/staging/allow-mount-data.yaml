@@ -15,8 +15,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: metrics-alert-manager-config
+            name: metrics-alert-manager
         - name: data
           hostPath:
-            path: /tmp
-            type: Directory
+            path: /usr/staging-metrics-alert-manager

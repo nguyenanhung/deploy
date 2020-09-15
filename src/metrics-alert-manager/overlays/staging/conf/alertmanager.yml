@@ -6,9 +6,12 @@ global:
 
 route:
   group_by: [alertname, datacenter, app]
-  receiver: 'team-1'
+  receiver: 'gmail'
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 3h
 
 receivers:
-  - name: 'team-1'
+  - name: 'gmail'
     email_configs:
-    - to: 'tungcuong1997@gmail.com'
+    - to: 'tungcuonghust@gmail.com'
