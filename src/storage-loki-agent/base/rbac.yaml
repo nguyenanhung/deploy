@@ -3,14 +3,13 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: storage-loki-agent
 rules:
-- apiGroups: [""] # "" indicates the core API group
-  resources:
-  - namespaces
-  - pods
-  verbs: ["get", "watch", "list"]
+  - apiGroups: [''] # "" indicates the core API group
+    resources:
+      - namespaces
+      - pods
+    verbs: ['get', 'watch', 'list']
 
 ---
-
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -18,26 +17,23 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: storage-loki-agent
-    namespace: default
 roleRef:
   kind: ClusterRole
   name: storage-loki-agent
   apiGroup: rbac.authorization.k8s.io
-
+  
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: storage-loki-agent
 rules:
-- apiGroups:      ['extensions']
-  resources:      ['podsecuritypolicies']
-  verbs:          ['use']
-  resourceNames:  [storage-loki-agent]
+  - apiGroups: ['extensions']
+    resources: ['podsecuritypolicies']
+    verbs: ['use']
+    resourceNames: [storage-loki-agent]
 
 ---
-
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -47,5 +43,5 @@ roleRef:
   kind: Role
   name: storage-loki-agent
 subjects:
-- kind: ServiceAccount
-  name: storage-loki-agent
+  - kind: ServiceAccount
+    name: storage-loki-agent
