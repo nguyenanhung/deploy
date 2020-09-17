@@ -9,3 +9,4 @@
 * add podAntiAffinitiy to make es-pod not co-locate in same node
 * add storage in srs-origin
 * limit resource rabbitmq
+* support ha in loki
