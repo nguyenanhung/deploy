@@ -126,3 +126,22 @@ spec:
         name: config
       - emptyDir: {}
         name: data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: discovery-consul-client
+    env: dev
+    group: discovery
+  name: discovery-consul-client
+  namespace: dev-discovery
+spec:
+  ports:
+  - name: http
+    port: 8500
+  selector:
+    app: discovery-consul-client
+    env: dev
+    group: discovery
+  type: ClusterIP

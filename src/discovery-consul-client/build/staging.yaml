@@ -127,3 +127,22 @@ spec:
       - hostPath:
           path: /usr/staging-consul-client
         name: data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: discovery-consul-client
+    env: staging
+    group: discovery
+  name: discovery-consul-client
+  namespace: staging-discovery
+spec:
+  ports:
+  - name: http
+    port: 8500
+  selector:
+    app: discovery-consul-client
+    env: staging
+    group: discovery
+  type: ClusterIP
