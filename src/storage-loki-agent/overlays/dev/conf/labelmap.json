@@ -4,7 +4,8 @@
     "host": "node",
     "labels": {
       "app": "app",
-      "release": "release"
+      "group": "group",
+      "env": "env"
     },
     "namespace_name": "namespace",
     "pod_name": "instance"

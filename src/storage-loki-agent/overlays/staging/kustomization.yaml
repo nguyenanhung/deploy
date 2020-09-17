@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: staging-storage
 commonLabels:
-  app: storage-loki
+  app: storage-loki-agent
   group: storage
   env: staging
 
