@@ -5,7 +5,7 @@ function(request) {
 
   // Inject the Pod name as a label with the key requested in the annotation.
   labels: {
-    nodeNameHash: std.md5(nodeName),
+    nodeNameHash: std.substr(std.md5(nodeName), 0, 10),
     attachSipnSvc: attachSipnSvc,
   }
 }

@@ -8,4 +8,4 @@ spec:
       annotations:
         sipn-svc-name: "node-origin"
         sipn-ports: "80:80"
-        sipn-namespace: "dev-node-origin"
+        sipn-namespace: "dev-ingest"

@@ -32,6 +32,7 @@ workloads=( \
   "visualization-weavescope-agent" \
   "visualization-weavescope-frontend" \
   "metrics-alert-manager" \
+  "discovery-consul-sync-k8s" \
   )
 builded_workloads=("discovery-consul-client" "discovery-consul-server") #bug in kustomize => have to build first
 
