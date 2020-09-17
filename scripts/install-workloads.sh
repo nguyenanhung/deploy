@@ -24,8 +24,8 @@ workloads=( \
   "storage-es" \
   "storage-mongo" \
   "storage-prometheus" \
-  "storage-loki-agent" \
-  "storage-loki" \
+  # "storage-loki-agent" \  #desprecated
+  # "storage-loki" \        #desprecated
   "traefik-ingress-controller" \
   "visualization-grafana" \
   "visualization-kibana" \
