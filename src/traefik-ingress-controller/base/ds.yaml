@@ -20,8 +20,7 @@ spec:
             - --certificatesresolvers.myresolver.acme.email=quangbm@gviet.vn
             - --certificatesresolvers.myresolver.acme.storage=acme.json
 
-            # - --log.level=WARN
-            - --log.level=DEBUG
+            - --log.level=WARN
             
             # this is the staging Let's Encrypt server.
             # Once you get things working, you should remove that whole line altogether.
