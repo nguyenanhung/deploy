@@ -10,7 +10,9 @@ commonLabels:
 resources:
   - ../../base
   - pvc.yaml
+  - ingress.yaml
 
 patchesStrategicMerge:
   - allow-schedule-on-specific-node.yaml
   - allow-mount-data.yaml
+  - change-config.yaml
