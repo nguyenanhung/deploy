@@ -10,3 +10,10 @@ spec:
           env:
             - name: ELASTICSEARCH_HOSTS
               value: http://storage-es.staging-storage:9200
+              
+            # allow behind reverse proxy
+            - name: SERVER_BASEPATH
+              value: "/kibana"
+            - name: SERVER_REWRITEBASEPATH
+              value: "true"
+

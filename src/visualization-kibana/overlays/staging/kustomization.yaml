@@ -12,5 +12,5 @@ resources:
   - ingress.yaml
 
 patchesStrategicMerge:
-  - change-es-url.yaml
+  - change-config.yaml
   - allow-schedule-on-specific-node.yaml

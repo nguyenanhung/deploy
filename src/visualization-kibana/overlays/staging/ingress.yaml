@@ -1,18 +1,16 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: storage-kibana
+  name: visualization-kibana
 spec:
-  # entryPoints:
-  #   - storage-kibana
+  entryPoints: 
+    - web
   routes:
     - kind: Rule
-      match: Host(`storage-kibana`)
-      priority: 10
+      match: PathPrefix(`/kibana`)
       services:
         - kind: Service
-          name: storage-kibana
-          namespace: staging-storage
+          name: visualization-kibana
+          namespace: staging-visualization
           port: 5601
           strategy: RoundRobin
-          weight: 10
