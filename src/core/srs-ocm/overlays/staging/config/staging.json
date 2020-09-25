@@ -1,0 +1,6 @@
+{
+  "port": 3001,
+  "host": "0.0.0.0",
+  "mongodbUrl": "mongodb://mongodb-headless.staging-persistence:27017/ocm?replicaSet=rs0",
+  "srsDiscoveryPath": "/api/v1/clusters"
+}

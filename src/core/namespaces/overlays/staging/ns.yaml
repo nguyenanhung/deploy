@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-controllers
+  labels:
+    istio-injection: enabled 
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-ingest
+  labels:
+    istio-injection: enabled 
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-persistence
+  labels:
+    istio-injection: enabled 

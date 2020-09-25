@@ -1,0 +1,14 @@
+#repo: https://charts.bitnami.com/bitnami
+#chart: rabbitmq
+#project: ${env}
+#namespace: ${env}-persistence
+---
+persistence: 
+  storageClass: "openebs-hostpath"
+metrics: 
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: "cattle-prometheus"
+nodeSelector: 
+  node-role.sigmaott.com/api: "true"

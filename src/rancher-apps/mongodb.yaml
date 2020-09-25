@@ -1,0 +1,21 @@
+#repo: https://charts.bitnami.com/bitnami
+#chart: mongodb
+#project: ${env}
+#namespace: ${env}-persistence
+---
+auth:
+  enabled: false
+arbiter:
+  enabled: false
+persistence: 
+  storageClass: "openebs-hostpath"
+metrics: 
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: "cattle-prometheus"
+architecture: "replicaset"
+useStatefulSet: true
+replicaCount: 3
+nodeSelector: 
+  node-role.sigmaott.com/api: "true"
