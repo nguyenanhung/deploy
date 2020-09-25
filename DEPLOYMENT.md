@@ -50,6 +50,19 @@
 * Step 5: Install Rancher app and istio
   * Follow the docs to install istio (links: https://rancher.com/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/)
   * Follow the docs to install app with the config (values in helm terminology) in src/rancher-apps folder (links: https://rancher.com/docs/rancher/v2.x/en/catalog/)
+  * If get the err with openebs:
+    * Using JIVA or localPV: add the following config to cluster  
+      ```yaml
+      services:
+        kubelet:
+          extra_binds:
+          - /var/openebs/local:/var/openebs/local
+      ```
+    * Error with Admission, using command:
+      ```bash
+        kubectl delete validatingwebhookconfigurations validation-webhook-cfg
+        kubectl delete deploy openebs-admission-server -n openebs 
+      ```      
 
 * Step 6: Install workloads
 ```bash
