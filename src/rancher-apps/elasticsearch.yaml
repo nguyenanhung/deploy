@@ -1,0 +1,36 @@
+#repo: https://charts.bitnami.com/bitnami
+#chart: elasticsearch
+#project: ${env}
+---
+global:
+  storageClass: "openebs-hostpath"
+  kibanaEnabled: true
+master:
+  replicas: 3
+data:
+  replicas: 3
+nodeSelector: 
+  node-role.sigmaott.com/logging: "true"
+metrics: 
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: "cattle-prometheus"
+kibana:
+  metrics: 
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: "cattle-prometheus"
+  nodeSelector: 
+    node-role.sigmaott.com/api: "true"
+  persistence:
+    enabled: false
+  ingress:
+    enabled: true
+    hosts:
+      - path: "/kibana"
+  configuration:
+    server:
+      basePath: "/kibana"
+      rewriteBasePath: true
