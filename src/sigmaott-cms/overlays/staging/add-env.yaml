@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-cms
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-cms
+          env:
+          - name: NODE_ENV
+            value: staging
+          - name: REACT_APP_API_URL
+            value: http://172.16.20.80:30003

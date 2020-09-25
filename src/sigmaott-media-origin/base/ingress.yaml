@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: api-media-origin
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Path(`/origin`)
+      priority: 10
+      services:
+        - kind: Service
+          name: api-media-origin
+          port: 80
+          strategy: RoundRobin
+          weight: 10

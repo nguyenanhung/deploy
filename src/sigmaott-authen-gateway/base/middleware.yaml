@@ -1,0 +1,43 @@
+# Strip prefix /prometheus
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-authen-gateway-stripprefix-prometheus
+spec:
+  stripPrefix:
+    prefixes:
+      - /prometheus
+    forceSlash: false
+
+---
+# Strip prefix /cms
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-authen-gateway-stripprefix-cms
+spec:
+  stripPrefix:
+    prefixes:
+      - /cms
+    forceSlash: false
+
+--- 
+# cors header
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-authen-gateway-cors
+spec:
+  headers:
+    accessControlAllowHeaders: 
+      - "*"
+    accessControlAllowMethods:
+      - "GET"
+      - "POST"
+      - "OPTIONS"
+      - "PUT"
+      - "DELETE"
+    accessControlAllowOriginList: 
+      - "*"
+    accessControlMaxAge: 100
+    addVaryHeader: true

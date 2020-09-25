@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    io.kompose.service: api-media-origin
+  name: api-media-origin
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+      labels:
+        io.kompose.network/livestreamnet: "true"
+        io.kompose.service: api-media-origin
+    spec:
+      containers:
+      - name: api-media-origin
+        image: registry.gviet.vn:5000/sigma-livestream/livestream-media:1.0.0-beta
+        imagePullPolicy: ""
+        resources: {}
+        volumeMounts:
+        - mountPath: /data
+          name: media-origin-hostpath
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - hostPath:
+          path: /tmp/static
+        name: media-origin-hostpath
+status: {}

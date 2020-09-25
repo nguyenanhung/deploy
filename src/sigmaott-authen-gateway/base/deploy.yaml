@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-authen-gateway
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        io.kompose.network/livestreamnet: "true"
+        io.kompose.service: api-authen-gateway
+    spec:
+      containers:
+      - name: api-authen-gateway
+        image: registry.gviet.vn:5000/sigma-livestream/api-gateway:1.0.0-beta
+        imagePullPolicy: ""
+        resources: {}
+        volumeMounts: null
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

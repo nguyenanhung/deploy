@@ -1,0 +1,51 @@
+# =================================================================
+# Mongo connect information
+# =================================================================
+mongo:
+  uri: mongodb://mongodb-headless.staging-persistence/livestream?replicaSet=rs0
+# =================================================================
+# Server config information
+# =================================================================
+server: 
+  port: 80
+  host: 0.0.0.0
+# =================================================================
+# Origin server information
+# =================================================================
+origin:
+  upload: http://api-media-origin.staging-solution/origin
+  download: http://api-media-origin.staging-solution/origin
+  public: http://172.16.20.80:30003/origin
+
+# =================================================================
+# RTMP server information
+# ================================================================= 
+rtmp:
+  server: rtmp://srs-edge.staging-ingest:1935/live
+  api: http://srs-edge.staging-ingest:1985/api/v1
+  public: rtmp://172.16.20.87:30001/live
+
+# =================================================================
+# GRPC server information
+# ================================================================= 
+grpc:
+  host: 0.0.0.0
+  port: 50051
+
+# =================================================================
+# Config default information
+# =================================================================
+config_default:
+  # enable feature catchup by default
+  catchup: false
+  record: false
+  dvr: false
+  livestream_mode: normal
+  transcode:
+    enabled: true
+    profile:
+      - 1080p
+      - 720p
+      - 480p
+      - 360p
+    thumbnail: false

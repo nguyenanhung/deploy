@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-transcoder
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    spec:
+      containers:
+      - name: api-transcoder
+        image: registry.gviet.vn:5000/sigma-livestream/livestream-transcoder:1.0.0-beta
+        imagePullPolicy: ""
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

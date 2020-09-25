@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-transcoder
+spec:
+  template:
+    spec:
+      containers:
+      - name: api-transcoder
+        volumeMounts:
+        - mountPath: /usr/src/app/config/config.yaml
+          name: api-transcoder-config
+          subPath: config.yaml
+      volumes:
+      - name: api-transcoder-config
+        configMap:
+          name: api-transcoder-config

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    io.kompose.service: transcode-channel
+  name: transcode-channel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: transcode-channel
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+      labels:
+        io.kompose.network/livestreamnet: "true"
+        io.kompose.service: transcode-channel
+    spec:
+      containers:
+      - name: transcode-channel
+        image: registry.gviet.vn:5000/sigma-livestream/s-transcoder:1.0.0
+        imagePullPolicy: ""
+        livenessProbe:
+          exec:
+            command:
+            - node scripts/healthcheck.js
+          failureThreshold: 3
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 10
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

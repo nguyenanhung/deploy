@@ -1,0 +1,38 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: livestream-channel
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Path(`/livestream`)
+      priority: 10
+      services:
+        - kind: Service
+          name: livestream-channel
+          namespace: dev-api
+          port: 80
+          strategy: RoundRobin
+          weight: 10
+    - kind: Rule
+      match: Path(`/srs`)
+      priority: 10
+      services:
+        - kind: Service
+          name: livestream-channel
+          namespace: dev-api
+          port: 80
+          strategy: RoundRobin
+          weight: 10
+    - kind: Rule
+      match: Path(`/stats`)
+      priority: 10
+      services:
+        - kind: Service
+          name: livestream-channel
+          namespace: dev-api
+          port: 80
+          strategy: RoundRobin
+          weight: 10

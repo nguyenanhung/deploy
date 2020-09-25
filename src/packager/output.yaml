@@ -1,0 +1,83 @@
+apiVersion: v1
+data:
+  config.json: "{\n\t\"consul\": {\n\t\t\"enable\": 1,\n\t\t\"id\": \"transcoder-1\",\n\t\t\"address\": \"transcoder\",\n\t\t\"server\": \"consul-server-bootstrap:8500\",\n\t\t\"tag\": [\n\t\t\t\"full-hd\"\n\t\t],\n\t\t\"meta\": {\n            \"liveRef\": \"/origin/live\",\n\t\t\t\"liveDir\": \"/data/transcoder/live\",\n\t\t\t\"dataDir\": \"/data/transcoder/data\",\n\t\t\t\"dataRef\": \"/origin/data\",\n\t\t\t\"capacity\": 60\n\t\t}\n\t}\n}"
+kind: ConfigMap
+metadata:
+  labels:
+    app: node-packager
+    env: staging
+    group: packager
+  name: node-packager-config
+  namespace: staging-packager
+---
+apiVersion: v1
+data:
+  sign.dat: Iyd+R20bZRohW1Y1AiAMdzxNSgURNn0pRXx0QzJFPVU8fSUNH2NhBRlbCVR/Y3d1GkEhTHMyJFRtKVMWLXpmJw==
+kind: Secret
+metadata:
+  labels:
+    app: node-packager
+    env: staging
+    group: packager
+  name: node-packager-certificate
+  namespace: staging-packager
+type: Opaque
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    app: node-packager
+    env: staging
+    group: packager
+    io.kompose.service: packager
+  name: packager
+  namespace: staging-packager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-packager
+      env: staging
+      group: packager
+      io.kompose.service: packager
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: node-packager
+        env: staging
+        group: packager
+        io.kompose.network/livestreamnet: "true"
+        io.kompose.service: packager
+    spec:
+      containers:
+      - image: registry.gviet.vn:5000/sigma-livestream/transcoder:live-cpu-obf_2.0.2
+        imagePullPolicy: ""
+        name: packager
+        securityContext:
+          capabilities:
+            add:
+            - SYS_RAWIO
+        volumeMounts:
+        - mountPath: /usr/transcoder/data
+          name: node-packager-config
+        - mountPath: /usr/transcoder/cert
+          name: node-packager-certificate
+        - mountPath: /data/transcoder
+          name: node-packager-hostpath
+      nodeSelector:
+        node-role.sigmaott.com/packager: "true"
+      restartPolicy: Always
+      volumes:
+      - hostpath:
+          path: /tmp/static
+          type: Directory
+        name: node-packager-static
+      - configMap:
+          name: node-packager-config
+        name: node-packager-config
+      - name: node-packager-certificate
+        secret:
+          secretName: node-packager-certificate

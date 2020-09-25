@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-authen-gateway
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-authen-gateway
+          env:
+          - name: NODE_ENV
+            value: staging
+          - name: LOG_RESPONSE
+            value: 0
+          - name: GRPC_URL
+            value: api-authentication:3001
+          - name: ROUTERS
+            value: {"transcoder":{"route":"/transcoder","target":"api-transcoder/transcoder"},"asset":{"route":"/asset","target":"api-asset-management/asset"},"s-transcoder":{"route":"/s-transcoder","target":"transcode-channel/"},"webhook":{"route":"/webhook","target":"api-webhook/webhook"},"livestream":{"route":"/livestream","target":"livestream-channel/livestream"},"prometheus":{"route":"/api/v1","target":"access-prometheus:9090/api/v1"}}

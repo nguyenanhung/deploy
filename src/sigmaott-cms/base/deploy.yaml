@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-cms
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+      labels:
+        io.kompose.network/livestreamnet: "true"
+        io.kompose.service: livestream-cms
+    spec:
+      containers:
+      - name: api-cms
+        image: registry.gviet.vn:5000/sigma-livestream/livestream-cms:0.0.1
+        imagePullPolicy: ""
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

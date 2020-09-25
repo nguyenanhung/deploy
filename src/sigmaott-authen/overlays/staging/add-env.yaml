@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-authentication
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-authentication
+          env:
+          - name: NODE_ENV
+            value: staging
+          - name: DB_SERVERS
+            value: mongodb-headless.staging-persistence
+          - name: DB_REPLS
+            value: rs0

@@ -1,0 +1,31 @@
+# Strip prefix /authentication
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-authentication-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /authentication
+    forceSlash: false
+
+--- 
+# cors header
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-authentication-cors
+spec:
+  headers:
+    accessControlAllowHeaders: 
+      - "*"
+    accessControlAllowMethods:
+      - "GET"
+      - "POST"
+      - "OPTIONS"
+      - "PUT"
+      - "DELETE"
+    accessControlAllowOriginList: 
+      - "*"
+    accessControlMaxAge: 100
+    addVaryHeader: true

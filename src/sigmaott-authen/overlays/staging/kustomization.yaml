@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: staging-solution
+commonLabels:
+  app: api-authentication
+  group: solution-server
+  env: staging
+
+generatorOptions:
+  disableNameSuffixHash: true
+  
+configMapGenerator:
+  - name: api-authentication-default-value
+    files:
+      - default/user.json
+
+resources:
+  - ../../base
+
+
+patchesStrategicMerge:
+  - allow-schedule-on-specific-node.yaml
+  - add-env.yaml
+  - add-default-value.yaml

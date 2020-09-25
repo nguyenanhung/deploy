@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job-worker
+spec:
+  template:
+    spec:
+      containers:
+      - name: job-worker
+        volumeMounts:
+        - mountPath: /usr/src/app/config/config.yaml
+          name: job-worker-config
+          subPath: config.yaml
+      volumes:
+      - name: job-worker-config
+        configMap:
+          name: job-worker-config
