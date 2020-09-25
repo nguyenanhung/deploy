@@ -47,8 +47,9 @@
 ./scripts/install-workloads-namespaces.sh <dev|staging>
 ```
 
-* Step 5: Install Rancher app
-  Follow the docs to install app with the config (values in helm terminology) in src/rancher-apps folder
+* Step 5: Install Rancher app and istio
+  * Follow the docs to install istio (links: https://rancher.com/docs/rancher/v2.x/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster/)
+  * Follow the docs to install app with the config (values in helm terminology) in src/rancher-apps folder (links: https://rancher.com/docs/rancher/v2.x/en/catalog/)
 
 * Step 6: Install workloads
 ```bash
