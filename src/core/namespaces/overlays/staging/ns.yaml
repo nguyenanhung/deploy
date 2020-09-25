@@ -20,3 +20,18 @@ metadata:
   name: staging-persistence
   labels:
     istio-injection: enabled 
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-packager
+  labels:
+    istio-injection: enabled 
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: staging-solution
+  labels:
+    istio-injection: enabled 
