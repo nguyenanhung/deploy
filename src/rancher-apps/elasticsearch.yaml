@@ -1,6 +1,7 @@
 #repo: https://charts.bitnami.com/bitnami
 #chart: elasticsearch
 #project: ${env}
+#namespace: ${env}-persistence
 ---
 global:
   storageClass: "openebs-hostpath"

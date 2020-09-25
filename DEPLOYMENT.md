@@ -42,12 +42,20 @@
   ![rancher-cluster-info](img/rancher-kubeconfig.PNG)
   * A modal is show up, copy all the content and paste to .kube/config
 
-* Step 4: Install workloads
+* Step 4: Install workloads namespaces
+```bash
+./scripts/install-workloads-namespaces.sh <dev|staging>
+```
+
+* Step 5: Install Rancher app
+  Follow the docs to install app with the config (values in helm terminology) in src/rancher-apps folder
+
+* Step 6: Install workloads
 ```bash
 ./scripts/install-workloads.sh <dev|staging>
 ```
 
-* Step 5: Add project
+* Step 7: Add project
   * In rancher ui, click to your cluster name
   ![rancher-cluster-info](img/rancher-cluster-info.PNG)
   * Click Projects/Namespaces
@@ -57,7 +65,7 @@
   * Click Move and select option (your <project_name>)
 ]
 
-* Step 6: View your result
+* Step 8: View your result
   * In rancher ui, hover global tab (near the bull icon)
   ![rancher-cluster-info](img/rancher-cluster-info.PNG)
   * Hover your cluster name

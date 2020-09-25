@@ -1,6 +1,7 @@
 #repo: https://charts.bitnami.com/bitnami
 #chart: rabbitmq
 #project: ${env}
+#namespace: ${env}-persistence
 ---
 persistence: 
   storageClass: "openebs-hostpath"

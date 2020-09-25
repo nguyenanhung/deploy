@@ -1,7 +1,10 @@
 #repo: https://charts.bitnami.com/bitnami
 #chart: mongodb
 #project: ${env}
+#namespace: ${env}-persistence
 ---
+auth:
+  enabled: false
 arbiter:
   enabled: false
 persistence: 
