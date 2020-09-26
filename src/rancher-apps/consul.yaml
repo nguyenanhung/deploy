@@ -1,8 +1,0 @@
-#repo: https://helm.releases.hashicorp.com
-#chart: consul
-#project: System
-#namespace: consul
----
-  server: 
-    storage: "2Gi"
-    storageClass: "openebs-hostpath"
