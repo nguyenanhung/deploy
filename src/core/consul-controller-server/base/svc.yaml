@@ -64,7 +64,9 @@ kind: Service
 metadata:
   name: consul-controller-server-ui
 spec:
+  type: NodePort
   ports:
     - name: http
+      nodePort: 30006
       port: 80
       targetPort: 8500
