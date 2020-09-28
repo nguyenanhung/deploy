@@ -12,9 +12,6 @@ spec:
         'consul.hashicorp.com/service-name': 'Transcoder'
         'consul.hashicorp.com/service-port': '9999'
     spec:
-      updateStrategy: RollingUpdate
-        maxUnavailable: 1
-        minReadySeconds: 0
       hostNetwork: true
       containers:
       - name: transcoder
