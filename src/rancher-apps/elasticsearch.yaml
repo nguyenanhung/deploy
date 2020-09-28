@@ -10,8 +10,6 @@ master:
   replicas: 3
 data:
   replicas: 3
-nodeSelector: 
-  node-role.sigmaott.com/logging: "true"
 metrics: 
   enabled: true
   serviceMonitor:
