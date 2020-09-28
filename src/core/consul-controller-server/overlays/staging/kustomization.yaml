@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: staging-controllers
+commonLabels:
+  app: consul-controller-server
+  group: controllers
+  env: staging
+
+configMapGenerator:
+  - name: consul-controller-server-config
+    files:
+      - config/extra-from-values.json
+
+resources:
+  - ../../base
+
+patchesStrategicMerge:
+  - allow-mount-data.yaml
+  - allow-schedule-on-specific-node.yaml
