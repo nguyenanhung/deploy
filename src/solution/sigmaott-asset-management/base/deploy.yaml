@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: api-asset-management
-  name: api-asset-management
+    io.kompose.service: api-asset
+  name: api-asset
 spec:
   replicas: 1
   strategy: {}
@@ -11,10 +11,10 @@ spec:
     metadata:
       labels:
         io.kompose.network/livestreamnet: "true"
-        io.kompose.service: api-asset-management
+        io.kompose.service: api-asset
     spec:
       containers:
-      - name: api-asset-management
+      - name: api-asset
         image: registry.gviet.vn:5000/sigma-livestream/livestream-asset-management:1.0.0
         imagePullPolicy: ""
         resources: {}

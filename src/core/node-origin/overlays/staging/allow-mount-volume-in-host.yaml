@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: node-origin
 spec:
@@ -15,8 +15,7 @@ spec:
       volumes:
         - name: statics
           hostPath:
-            path: /
-            type: Directory
+            path: /tmp/static
         - name: conf
           configMap:
             name: node-origin-conf

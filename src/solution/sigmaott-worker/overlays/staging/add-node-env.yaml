@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-worker
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-worker
+          env:
+          - name: NODE_ENV
+            value: staging
+          - name: CONSUL.HOST
+            value: consul-controller-server.staging-controllers
+          - name: PORT
+            value: "80"
+          - name: TRANSCODER_SERVICE
+            value: Transcoder

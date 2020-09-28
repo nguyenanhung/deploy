@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-cms-next
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-cms-next
+          env:
+          - name: NODE_ENV
+            value: staging
+          - name: VUE_APP_BASE_API_URL
+            value: http://172.16.20.80:30003
+          - name: VUE_APP_LIVESTREAM_MODULE
+            value: true
+          - name: VUE_APP_TRANSCODE_MODULE
+            value: true
+          - name: VUE_APP_BASE_API
+            value: /stage-api

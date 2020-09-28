@@ -1,0 +1,18 @@
+{
+	"consul": {
+		"enable": 1,
+		"id": "transcoder-1",
+		"address": "transcoder",
+		"server": "consul-server-bootstrap:8500",
+		"tag": [
+			"full-hd"
+		],
+		"meta": {
+            "liveRef": "/origin/live",
+			"liveDir": "/data/transcoder/live",
+			"dataDir": "/data/transcoder/data",
+			"dataRef": "/origin/data",
+			"capacity": 60
+		}
+	}
+}

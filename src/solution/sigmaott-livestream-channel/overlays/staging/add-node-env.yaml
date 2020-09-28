@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: livestream-channel
+  name: api-livestream-channel
 spec:
   template:
     spec:
       containers:
-        - name: livestream-channel
+        - name: api-livestream-channel
           env:
           - name: NODE_ENV
             value: staging

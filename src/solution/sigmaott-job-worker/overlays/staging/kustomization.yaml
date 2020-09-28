@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: staging-solution
 commonLabels:
-  app: job-worker
+  app: api-job-worker
   group: solution-server
   env: staging
 

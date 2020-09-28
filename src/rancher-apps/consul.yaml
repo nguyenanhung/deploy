@@ -3,6 +3,12 @@
 #project: System
 #namespace: consul
 ---
-  server: 
-    storage: "2Gi"
-    storageClass: "openebs-hostpath"
+server: 
+  storage: "2Gi"
+  storageClass: "openebs-hostpath"
+ui:
+  service:
+    type: NodePort
+syncCatalog:
+  enabled: true
+  toK8S: false

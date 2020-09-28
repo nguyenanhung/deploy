@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: staging-solution
 commonLabels:
-  app: livestream-channel
+  app: api-livestream-channel
   group: solution-server
   env: staging
 

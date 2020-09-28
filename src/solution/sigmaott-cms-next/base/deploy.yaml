@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-cms-next
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+    spec:
+      containers:
+      - name: api-cms-next
+        image: registry.gviet.vn:5000/sigma-livestream/livestream-cms:1.0.0-beta
+        imagePullPolicy: ""
+        resources: {}
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

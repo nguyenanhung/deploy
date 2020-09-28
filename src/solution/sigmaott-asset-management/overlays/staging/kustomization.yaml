@@ -3,17 +3,17 @@ kind: Kustomization
 
 namespace: staging-solution
 commonLabels:
-  app: api-worker
+  app: api-asset
   group: solution-server
   env: staging
 
 generatorOptions:
   disableNameSuffixHash: true
   
-configMapGenerator:
-  - name: packager-config
-    files:
-      - data/config.json
+# configMapGenerator:
+#   - name: packager-config
+#     files:
+#       - data/config.json
 
 resources:
   - ../../base
@@ -21,3 +21,4 @@ resources:
 
 patchesStrategicMerge:
   - allow-schedule-on-specific-node.yaml
+  - add-node-env.yaml

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+    'consul.hashicorp.com/service-name': 'Transcoder'
+    'consul.hashicorp.com/service-port': '9999'
+  name: transcoder
+spec:
+  template:
+    metadata:
+      annotations:
+        'consul.hashicorp.com/service-name': 'Transcoder'
+        'consul.hashicorp.com/service-port': '9999'
+    spec:
+      updateStrategy: RollingUpdate
+        maxUnavailable: 1
+        minReadySeconds: 0
+      hostNetwork: true
+      containers:
+      - name: transcoder
+        image: registry.gviet.vn:5000/sigma-livestream/transcoder:live-cpu-obf_2.0.2
+        imagePullPolicy: ""
+        resources: {}
+        securityContext:
+          capabilities:
+            add:
+            - SYS_RAWIO
+        volumeMounts:
+        - mountPath: /usr/transcoder/data
+          name: transcoder-config
+        - mountPath: /usr/transcoder/cert
+          name: transcoder-certificate
+        - mountPath: /data/transcoder
+          name: transcoder-static
+      restartPolicy: Always
+      volumes:
+        - name: transcoder-static
+          hostPath:
+            path: /tmp/static
+        - name: transcoder-config
+          configMap:
+            name: transcoder-config
+        - name: transcoder-certificate
+          secret:
+            secretName: transcoder-certificate        

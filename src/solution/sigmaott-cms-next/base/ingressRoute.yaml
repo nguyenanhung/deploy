@@ -1,0 +1,19 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: api-cms-next
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: PathPrefix(`/`)
+      priority: 10
+      services:
+        - kind: Service
+          name: api-cms-next
+          port: 3000
+          strategy: RoundRobin
+          weight: 10
+      # middlewares:
+      #   - name: api-cms-stripprefix

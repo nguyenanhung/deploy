@@ -7,14 +7,12 @@ spec:
     - web
   routes:
     - kind: Rule
-      match: Path(`/authentication`)
-      priority: 10
+      match: PathPrefix(`/authentication`)
       services:
         - kind: Service
           name: api-authentication
           port: 80
           strategy: RoundRobin
-          weight: 10
       middlewares:
       - name: api-authentication-stripprefix
       - name: api-authentication-cors

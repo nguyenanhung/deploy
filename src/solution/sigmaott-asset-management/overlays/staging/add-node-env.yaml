@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-asset
+spec:
+  template:
+    spec:
+      containers:
+        - name: api-asset
+          env:
+          - name: NODE_ENV
+            value: staging
+          - name: PORT
+            value: "80"
+          - name: PREFIX
+            value: /asset
+          - name: DB
+            value: asset
+          - name: DB_SERVERS
+            value:  mongodb-headless.staging-persistence.svc

@@ -1,0 +1,11 @@
+# Strip prefix /authentication
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: api-cms-next-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /
+    forceSlash: false
+

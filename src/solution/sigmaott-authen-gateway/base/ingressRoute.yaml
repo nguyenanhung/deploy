@@ -8,27 +8,23 @@ spec:
   routes:
     - kind: Rule
       name: prometheus-via-gateway
-      match: Path(`/prometheus`)
-      priority: 10
+      match: PathPrefix(`/prometheus`)
       services:
         - kind: Service
           name: access-prometheus
           namespace: cattle-prometheus
           port: 80
           strategy: RoundRobin
-          weight: 10
       middlewares:
       - name: api-authen-gateway-stripprefix-prometheus
     - kind: Rule
       name: api-gateway-cms
-      match: Path(`/cms`)
-      priority: 10
+      match: PathPrefix(`/cms`)
       services:
         - kind: Service
           name: api-authen-gateway
           port: 80
           strategy: RoundRobin
-          weight: 10
       middlewares:
       - name: api-authen-gateway-stripprefix-cms
       - name: api-authen-gateway-cors

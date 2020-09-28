@@ -14,3 +14,5 @@ spec:
             value: mongodb-headless.staging-persistence
           - name: DB_REPLS
             value: rs0
+          - name: SECRET_KEY
+            value: thudojsc

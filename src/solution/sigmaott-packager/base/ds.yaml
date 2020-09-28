@@ -2,20 +2,26 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   annotations:
+    'consul.hashicorp.com/service-name': 'Packager'
+    'consul.hashicorp.com/service-port': '9999'
   labels:
     io.kompose.service: packager
   name: packager
 spec:
-  selector:
-    matchLabels:
-      io.kompose.service: packager
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 1
+    type: RollingUpdate
   template:
     metadata:
       annotations:
+        'consul.hashicorp.com/service-name': 'Packager'
+        'consul.hashicorp.com/service-port': '9999'
       labels:
         io.kompose.network/livestreamnet: "true"
         io.kompose.service: packager
     spec:
+      hostNetwork: true
       containers:
       - name: packager
         image: registry.gviet.vn:5000/sigma-livestream/transcoder:live-cpu-obf_2.0.2

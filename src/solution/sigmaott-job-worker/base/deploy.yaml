@@ -2,34 +2,26 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-  labels:
-    io.kompose.service: job-worker
-  name: job-worker
+  name: api-job-worker
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      io.kompose.service: job-worker
   strategy: {}
   template:
     metadata:
       annotations:
-      labels:
-        io.kompose.network/livestreamnet: "true"
-        io.kompose.service: job-worker
     spec:
       containers:
-      - name: job-worker
+      - name: api-job-worker
         image: registry.gviet.vn:5000/sigma-livestream/livestream-job:1.0.0-beta
         imagePullPolicy: ""
-        livenessProbe:
-          exec:
-            command:
-            - curl -fs http://localhost/ || exit 1
-          failureThreshold: 3
-          initialDelaySeconds: 45
-          periodSeconds: 30
-          timeoutSeconds: 5
+        # livenessProbe:
+        #   exec:
+        #     command:
+        #     - curl -fs http://localhost/ || exit 1
+        #   failureThreshold: 3
+        #   initialDelaySeconds: 45
+        #   periodSeconds: 30
+        #   timeoutSeconds: 5
         resources: {}
       restartPolicy: Always
       serviceAccountName: ""

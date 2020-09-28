@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: job-worker
+  name: api-job-worker
 spec:
   template:
     spec:
       containers:
-      - name: job-worker
+      - name: api-job-worker
         volumeMounts:
         - mountPath: /usr/src/app/config/config.yaml
           name: job-worker-config

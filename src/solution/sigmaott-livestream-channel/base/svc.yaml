@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: livestream-channel
+  name: api-livestream-channel
 spec:
   type: ClusterIP
   ports:
