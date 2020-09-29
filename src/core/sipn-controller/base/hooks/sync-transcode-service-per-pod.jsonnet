@@ -1,6 +1,8 @@
 function(request) {
   local pod = request.object,
-  local nodeName = pod.spec.nodeName,
+
+  // daemonset only
+  local nodeName = pod.spec.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchFields[0].values[0],
   local nodeNameHash = std.substr(std.md5(nodeName), 0, 10),
   local svcName = pod.metadata.annotations["consul-svc-name"],
   local port = pod.metadata.annotations["consul-port"],
@@ -29,8 +31,8 @@ function(request) {
         },
         ports: [
           {
-            port: port,
-            targetPort: port,
+            port: std.parseInt(port),
+            targetPort: std.parseInt(port),
           }
         ]
       }
@@ -38,6 +40,6 @@ function(request) {
   ],
   labels: {
     nodeNameHash: nodeNameHash,
-    attachSipnSvc: attachSipnSvc,
+    attachSipnSvc: svcName,
   }
 }
