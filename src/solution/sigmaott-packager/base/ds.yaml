@@ -4,6 +4,7 @@ metadata:
   annotations:
     'consul.hashicorp.com/service-name': 'Packager'
     'consul.hashicorp.com/service-port': '9999'
+    'consul.hashicorp.com/service-meta-KEY1': 'value'
   labels:
     io.kompose.service: packager
   name: packager

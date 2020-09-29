@@ -29,7 +29,6 @@ spec:
             - "-ec"
             - |
               consul-k8s sync-catalog \
-                -k8s-default-sync=true \
                 -consul-domain=consul \
                 -allow-k8s-namespace="*" \
                 -deny-k8s-namespace="kube-system" \

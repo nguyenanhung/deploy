@@ -13,3 +13,4 @@ configMapGenerator:
       - hooks/sync-ingress-per-pod.jsonnet
       - hooks/sync-node-name-as-label.jsonnet
       - hooks/sync-service-per-pod.jsonnet
+      - hooks/sync-transcode-service-per-pod.jsonnet

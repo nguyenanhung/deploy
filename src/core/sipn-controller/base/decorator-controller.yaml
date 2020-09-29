@@ -39,6 +39,30 @@ spec:
       webhook:
         url: http://sipn-controller/sync-service-per-pod
 
+
+--- 
+
+apiVersion: metacontroller.k8s.io/v1alpha1
+kind: DecoratorController
+metadata:
+  name: sipn-transcode-service-per-pod
+spec:
+  resources:
+  - apiVersion: v1
+    resource: pods
+    annotationSelector:
+      matchExpressions:
+      - {key: consul-svc-name, operator: Exists}
+      - {key: consul-port, operator: Exists}
+      - {key: consul-namespace, operator: Exists}
+  attachments:
+  - apiVersion: v1
+    resource: services
+  hooks:
+    sync:
+      webhook:
+        url: http://sipn-controller/sync-transcode-service-per-pod
+
 ---
 apiVersion: metacontroller.k8s.io/v1alpha1
 kind: DecoratorController

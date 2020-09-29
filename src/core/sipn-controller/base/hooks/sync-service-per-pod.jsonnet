@@ -29,5 +29,9 @@ function(request) {
         ]
       }
     }
-  ]
+  ],
+  labels: {
+      nodeNameHash: nodeNameHash,
+      attachSipnSvc: svcName,
+  }
 }

@@ -6,4 +6,4 @@ spec:
   template:
     spec:
       nodeSelector:
-        node-role.sigmaott.com/trancode: 'true'
+        node-role.sigmaott.com/transcode: 'true'

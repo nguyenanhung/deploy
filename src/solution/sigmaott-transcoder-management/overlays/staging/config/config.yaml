@@ -13,7 +13,7 @@ server:
 # Consul config information
 # =================================================================
 consul:
-  host: consul-consul-server.consul
+  host: consul-controller-server.staging-controllers
   port: 8500
 
 

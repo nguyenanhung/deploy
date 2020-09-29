@@ -14,5 +14,7 @@ spec:
             value: consul-controller-server.staging-controllers
           - name: PORT
             value: "80"
+          - name: SRS_SERVICE
+            value: srs-origin-staging-ingest
           - name: TRANSCODER_SERVICE
             value: Transcoder

@@ -8,11 +8,11 @@
 			"full-hd"
 		],
 		"meta": {
-            "liveRef": "/origin/live",
-			"liveDir": "/data/transcoder/live",
-			"dataDir": "/data/transcoder/data",
-			"dataRef": "/origin/data",
-			"capacity": 60
+        "liveRef": "/origin/live",
+				"liveDir": "/data/transcoder/live",
+				"dataDir": "/data/transcoder/data",
+				"dataRef": "/origin/data",
+				"capacity": 60
 		}
 	}
 }

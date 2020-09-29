@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-origin
+spec:
+  template:
+    metadata:
+      annotations:
+        sipn-svc-name: "transcoder"
+        sipn-ports: "9999:9999"
+        sipn-namespace: "staging-packager"
+        service-name: "Transcoder"
