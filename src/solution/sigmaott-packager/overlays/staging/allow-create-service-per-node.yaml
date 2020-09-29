@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: transcoder
+  name: packager
 spec:
   template:
     metadata:
       annotations:
-        consul-svc-name: "transcoder"
+        consul-svc-name: "packager"
         consul-port: "9999"
         consul-namespace: "staging-packager"
         consul-data-dir: "/data/transcode"

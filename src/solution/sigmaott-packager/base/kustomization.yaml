@@ -3,4 +3,4 @@ kind: Kustomization
 
 resources:
   - ds.yaml
-  - svc.yaml
+  # - svc.yaml

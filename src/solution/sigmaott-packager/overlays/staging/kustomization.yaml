@@ -26,4 +26,4 @@ resources:
 
 patchesStrategicMerge:
   - allow-schedule-on-specific-node.yaml
-  - allow-create-ingress-per-node.yaml
+  - allow-create-service-per-node.yaml
