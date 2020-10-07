@@ -14,7 +14,7 @@ spec:
       containers:
       - name:  srs-ocm
         image:  registry.gviet.vn:5000/sigma-livestream/ocm
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources:
           requests:
             cpu: 100m
